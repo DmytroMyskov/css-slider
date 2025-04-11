@@ -1,0 +1,81 @@
+.slider {
+  width: 500px;
+  margin: auto;
+  position: relative;
+}
+
+.slider>label {
+  position: absolute;
+  top: 50%;
+  background-color: rgb(176, 127, 223);
+  padding: 5px 10px;
+  transform: translateY(-50%);
+  display: none;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.extended>label {
+  width: 250px;
+  top: 0;
+  bottom: 0;
+  transform: unset;
+  color: transparent;
+  background-color: #fff8;
+}
+
+input {
+  display: none;
+}
+
+.prev {
+  right: 101%;
+}
+
+.next {
+  left: 101%;
+}
+
+.extended>.prev {
+  right: 100%;
+}
+
+.extended>.next {
+  left: 100%;
+}
+
+.opening {
+  overflow: hidden;
+}
+
+.extended .opening {
+  width: 1000px;
+  margin-left: -250px;
+  padding-left: 250px;
+  box-sizing: border-box;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  transition: 1s;
+}
+
+[value="2"]:checked~.opening>.track {
+  translate: -500px;
+}
+
+[value="3"]:checked~.opening>.track {
+  translate: -1000px;
+}
+
+[value="4"]:checked~.opening>.track {
+  translate: -1500px;
+}
+
+[value="1"]:checked~.next[data-for="2"],
+[value="2"]:checked~:is(.prev[data-for="1"], .next[data-for="3"]),
+[value="3"]:checked~:is(.prev[data-for="2"], .next[data-for="4"]),
+[value="4"]:checked~.prev[data-for="3"] {
+  display: block;
+}
